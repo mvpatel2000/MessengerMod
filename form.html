@@ -6,10 +6,18 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-   <script src="main.js"></script>
+   <style type="text/css">
+      #frm {
+         margin-left: 20%;
+         margin-right: 20%;
+      }
+   </style>
 </head>
 <body>
+   <div class="jumbotron">
+      <center><h1>Messenger Extention</h1> 
+      <p>Change colors of facebook messenger chats to any color!</p> </center>
+   </div>
    <form id="frm" action="" method="post" enctype="multipart/form-data">
       <div class="form-group">
          <label for="username">Email:</label>
@@ -20,15 +28,11 @@
          <input type="password" class="form-control" name="password" id="password">
       </div>
       <div class="form-group">
-         <label for="target">Target:</label>
+         <label for="target">Name of Chat: (Currently only personal messages)</label>
          <input type="text" class="form-control" name="target" id="target">
       </div>
       <div class="form-group">
-         <label for="command">Command:</label>
-         <input type="text" class="form-control" name="command" id="command">
-      </div>
-      <div class="form-group">
-         <label for="info">Info:</label>
+         <label for="info">New HTML Color Code:</label>
          <input type="text" class="form-control" name="info" id="info">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>

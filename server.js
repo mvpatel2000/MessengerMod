@@ -81,15 +81,12 @@ function processFormFieldsIndividual(req, res) {
         res.writeHead(200, {
             'content-type': 'text/plain'
         });
-        res.write('received the data:\n\n');
-        res.end(util.inspect({
-            fields: fields
-        }));
+        res.write('Color updating!');
+        res.end();
 
         var USERNAME = fields["username"];
         var PASSWORD = fields["password"];
         var TARGET = fields["target"];
-        var COMMAND = fields["command"];
         var INFO = fields["info"];
 
         login({email: USERNAME, password: PASSWORD}, function callback (err, api) {
@@ -98,23 +95,18 @@ function processFormFieldsIndividual(req, res) {
             api.getUserID(TARGET, function(err, data) {
                 if(err) return callback(err);
 
-                // Send the message to the best match (best by Facebook's criteria)
                 var TARGET = data[0].userID;
                 console.log(TARGET);
-                if(COMMAND == "message") {
-                console.log("Sending a message...");
-                var yourID = TARGET;
-                //var msg = {body: "Hey!"};
-                var msg = {body: INFO}
-                api.sendMessage(msg, yourID);
-                }
-                else if(COMMAND == "color") {
-                    console.log("Changing the color...");
+
+                console.log("Changing the color...");
+                if(!(INFO.charAt(0)+""=="#")) {
+                    console.log("EMEMSEES");
                     var color = "#"+INFO; //#eb42f4
-                    api.changeThreadColor(color, TARGET, function callback(err) {
-                        if(err) return console.error(err);
-                    });
                 }
+                api.changeThreadColor(color, TARGET, function callback(err) {
+                    if(err) return console.error(err);
+                });
+
             });    
         });
 
@@ -123,5 +115,6 @@ function processFormFieldsIndividual(req, res) {
     form.parse(req);
 }
 
-server.listen(process.env.PORT);
+//server.listen(process.env.PORT);
+server.listen(1185);
 console.log("server listening on 1185");
