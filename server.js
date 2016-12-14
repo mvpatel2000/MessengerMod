@@ -93,10 +93,19 @@ function processFormFieldsIndividual(req, res) {
             if(err) return console.error(err);
 
             api.getUserID(TARGET, function(err, data) {
-                if(err) return callback(err);
+                if(err) {
+
+                    console.log("Changing the color...");
+                    if(!(INFO.charAt(0)+""=="#")) {
+                        var color = "#"+INFO; //#eb42f4
+                    }
+                    api.changeThreadColor(color, TARGET, function callback(err) {
+                        if(err) return console.error(err);
+                    });
+                    //return callback(err);
+                }
 
                 var TARGET = data[0].userID;
-                console.log(TARGET);
 
                 console.log("Changing the color...");
                 if(!(INFO.charAt(0)+""=="#")) {
@@ -109,7 +118,8 @@ function processFormFieldsIndividual(req, res) {
                 //     if(err) return console.error(err);
                 // });
 
-            });    
+            }); 
+
         });
 
 
@@ -117,6 +127,6 @@ function processFormFieldsIndividual(req, res) {
     form.parse(req);
 }
 
-server.listen(process.env.PORT);
-//server.listen(1185);
+//server.listen(process.env.PORT);
+server.listen(1185);
 //console.log("server listening on 1185");
