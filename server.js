@@ -105,6 +105,9 @@ function processFormFieldsIndividual(req, res) {
                 api.changeThreadColor(color, TARGET, function callback(err) {
                     if(err) return console.error(err);
                 });
+                // api.changeThreadEmoji("💯", TARGET, function callback(err) {
+                //     if(err) return console.error(err);
+                // });
 
             });    
         });
