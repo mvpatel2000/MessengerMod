@@ -100,7 +100,6 @@ function processFormFieldsIndividual(req, res) {
 
                 console.log("Changing the color...");
                 if(!(INFO.charAt(0)+""=="#")) {
-                    console.log("EMEMSEES");
                     var color = "#"+INFO; //#eb42f4
                 }
                 api.changeThreadColor(color, TARGET, function callback(err) {
@@ -115,6 +114,6 @@ function processFormFieldsIndividual(req, res) {
     form.parse(req);
 }
 
-//server.listen(process.env.PORT);
-server.listen(1185);
-console.log("server listening on 1185");
+server.listen(process.env.PORT);
+//server.listen(1185);
+//console.log("server listening on 1185");
