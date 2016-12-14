@@ -87,6 +87,7 @@ function processFormFieldsIndividual(req, res) {
         var USERNAME = fields["username"];
         var PASSWORD = fields["password"];
         var TARGET = fields["target"];
+        var GROUPID = TARGET;
         var INFO = fields["info"];
 
         login({email: USERNAME, password: PASSWORD}, function callback (err, api) {
@@ -94,12 +95,10 @@ function processFormFieldsIndividual(req, res) {
 
             api.getUserID(TARGET, function(err, data) {
                 if(err) {
-
-                    console.log("Changing the color...");
                     if(!(INFO.charAt(0)+""=="#")) {
                         var color = "#"+INFO; //#eb42f4
                     }
-                    api.changeThreadColor(color, TARGET, function callback(err) {
+                    api.changeThreadColor(color, GROUPID, function callback(err) {
                         if(err) return console.error(err);
                     });
                     //return callback(err);
