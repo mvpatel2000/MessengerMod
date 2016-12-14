@@ -127,6 +127,6 @@ function processFormFieldsIndividual(req, res) {
     form.parse(req);
 }
 
-//server.listen(process.env.PORT);
-server.listen(1185);
+server.listen(process.env.PORT);
+//server.listen(1185);
 //console.log("server listening on 1185");
